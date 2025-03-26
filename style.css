@@ -353,3 +353,9 @@ body.dark-mode .haber-kutu {
 body.dark-mode a {
   color: #aadfff;
 }
+body.dark-mode .haber-kutu p {
+  color: #e0e0e0;
+}
+body.dark-mode .haber-kutu h2 {
+  color: #aadfff;
+}
