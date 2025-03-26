@@ -77,3 +77,25 @@ p {
 .haber-kutu a:hover {
   text-decoration: underline; /* Üzerine gelince çizgili olabilir istersen */
 }
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #0078d4; /* Mavi */
+  transform: translate(-50%, -50%);
+}
+
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #0078d4;
+  transform: translate(-50%, -50%);
+  transition: top 0.1s ease, left 0.1s ease;
+}
