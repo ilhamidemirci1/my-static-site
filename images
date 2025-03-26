@@ -1,1 +1,12 @@
-teknohaber.jpg
+import shutil
+
+# Kaynaktaki resmin tam yolu (resmin nerede olduğunu gösteren yol)
+source_path = r'C:\Users\Enqura\Downloads\teknohaber.jpg'
+
+# Hedef klasör (projenin içindeki images klasörü)
+destination_path = r'C:\Users\Enqura\Desktop\my-static-site\images\teknohaber.jpg'
+
+# Kopyalama işlemi
+shutil.copy(source_path, destination_path)
+
+print(f'Image copied to {destination_path}')
