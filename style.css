@@ -1,3 +1,4 @@
+/* Genel body stilleri */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -5,42 +6,50 @@ body {
   color: #333;
 }
 
+/* Başlık rengi */
 h1 {
   color: #2c3e50;
 }
 
+/* Paragraflar için satır yüksekliği */
 p {
   line-height: 1.6;
 }
 
+/* HABERLERİ içeren alan */
 .haberler {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 40px;
+  justify-content: center;
 }
 
+/* Her bir haber kutusu */
 .haber-kutu {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid #ccc; /* <-- DİKDÖRTGEN ÇERÇEVE */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 45%;
-  transition: all 0.3s ease; /* hover efekti için */
+  border: 1px solid #ccc; /* ← DİKDÖRTGEN ÇERÇEVE */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* ← GÖLGE */
+  width: 400px;
+  transition: all 0.3s ease; /* Hover efekti için */
 }
 
+/* Hover efekti */
 .haber-kutu:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Haber başlığı */
 .haber-kutu h2 {
   margin-top: 0;
   font-size: 20px;
   color: #2c3e50;
 }
 
+/* Haber içeriği */
 .haber-kutu p {
   font-size: 16px;
   color: #555;
