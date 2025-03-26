@@ -277,11 +277,13 @@ p {
 }
 
 .intro,
-.search-container,
-.haberler {
-  max-width: 960px;
-  margin: 0 auto;
+.search-container {
+  margin: 20px auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
 
 #searchInput {
   padding: 10px 12px 10px 36px;  /* Sol boşluk ikona göre ayarlandı */
