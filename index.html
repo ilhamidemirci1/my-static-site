@@ -7,6 +7,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
 </head>
 
+<button id="darkModeToggle" title="Toggle dark mode">🌓</button>
+
 <body>
   <img src="images/entechbg2.png" alt="Banner Görseli" class="banner">
 
@@ -127,5 +129,13 @@
       noResultsMessage.style.display = matchCount === 0 ? "block" : "none";
     });
   </script>
+
+<script>
+  const toggleButton = document.getElementById("darkModeToggle");
+  toggleButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+</script>
+
 </body>
 </html>
