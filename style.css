@@ -118,5 +118,21 @@ p {
 }
 
 #scrollToTopBtn:hover {
-  background-color: #005a9e;
+  background-color: #61cbff;
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.intro h1 {
+  animation: slideIn 1.2s ease-out;
 }
