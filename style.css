@@ -69,3 +69,11 @@ p {
   font-size: 16px;
   color: #555;
 }
+.haber-kutu a {
+  color: #000000;        /* Siyah renk */
+  text-decoration: none; /* Altı çizgisiz */
+}
+
+.haber-kutu a:hover {
+  text-decoration: underline; /* Üzerine gelince çizgili olabilir istersen */
+}
