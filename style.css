@@ -362,3 +362,21 @@ body.dark-mode .haber-kutu h2 {
 body.dark-mode h1 {
   color: #ffffff;
 }
+/* Dark mode ikon dönüş efekti */
+#darkIcon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+#darkIcon.rotate {
+  transform: rotate(180deg);
+}
+
+#darkIcon {
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+#darkIcon.rotate {
+  transform: rotate(180deg);
+}

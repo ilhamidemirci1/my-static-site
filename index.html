@@ -9,8 +9,12 @@
 
 
 <body>
-  <button id="darkModeToggle" title="Toggle dark mode">🌓</button>
+
+  <button id="darkModeToggle" title="Toggle dark mode">
+    <span id="darkIcon">🌙</span>
+  </button>
   
+
   <img src="images/entechbg2.png" alt="Banner Görseli" class="banner">
 
   <div class="intro">
@@ -133,10 +137,25 @@
 
 <script>
   const toggleButton = document.getElementById("darkModeToggle");
+  const darkIcon = document.getElementById("darkIcon");
+
   toggleButton.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
+
+    // Dönme animasyonu
+    darkIcon.classList.add("rotate");
+
+    // İkon değişimi
+    const isDark = document.body.classList.contains("dark-mode");
+    darkIcon.textContent = isDark ? "☀️" : "🌙";
+
+    // 400ms sonra class’ı kaldır (tekrar dönebilmesi için)
+    setTimeout(() => {
+      darkIcon.classList.remove("rotate");
+    }, 400);
   });
 </script>
+
 
 </body>
 </html>
