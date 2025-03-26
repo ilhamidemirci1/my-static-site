@@ -80,4 +80,64 @@
   <script>
     // Fare takibi
     const cursorDot = document.querySelector(".cursor-dot");
-   
+    const cursorOutline = document.querySelector(".cursor-outline");
+
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      cursorDot.style.top = `${clientY}px`;
+      cursorDot.style.left = `${clientX}px`;
+      cursorOutline.style.top = `${clientY}px`;
+      cursorOutline.style.left = `${clientX}px`;
+    });
+  </script>
+
+  <!-- Scroll to top -->
+  <button id="scrollToTopBtn" title="Go to top">↑</button>
+  <script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    window.addEventListener("scroll", () => {
+      scrollToTopBtn.style.display = window.pageYOffset > 300 ? "block" : "none";
+    });
+
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+  <!-- Arama Filtresi -->
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const noResultsMessage = document.getElementById("noResultsMessage");
+
+    searchInput.addEventListener("input", function () {
+      const filter = this.value.toLowerCase();
+      const kutular = document.querySelectorAll(".haber-kutu");
+      let matchCount = 0;
+
+      kutular.forEach(kutu => {
+        const text = kutu.textContent.toLowerCase();
+        const match = text.includes(filter);
+        kutu.style.display = match ? "block" : "none";
+        if (match) matchCount++;
+      });
+
+      noResultsMessage.style.display = matchCount === 0 ? "block" : "none";
+    });
+  </script>
+
+  <!-- Dark Mode Toggle -->
+  <script>
+    const toggleButton = document.getElementById("darkModeToggle");
+    const darkIcon = document.getElementById("darkIcon");
+
+    toggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      darkIcon.classList.add("rotate");
+      darkIcon.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+      setTimeout(() => darkIcon.classList.remove("rotate"), 400);
+    });
+  </script>
+
+</body>
+</html>
