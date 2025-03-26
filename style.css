@@ -277,8 +277,10 @@ p {
 }
 
 .search-container {
-  margin-top: 20px;
-  padding: 10px;
+  max-width: 960px;     /* haber-kutularla aynı genişlikte tut */
+  margin: 30px auto 10px auto;  /* ortala */
+  padding: 0 10px;
+  text-align: left;      /* sola hizala */
 }
 
 #searchInput {
