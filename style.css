@@ -88,14 +88,14 @@ p {
 .cursor-dot {
   width: 8px;
   height: 8px;
-  background-color: #0078d4; /* Mavi */
+  background-color: #61cbff; /* Mavi */
   transform: translate(-50%, -50%);
 }
 
 .cursor-outline {
   width: 30px;
   height: 30px;
-  border: 2px solid #0078d4;
+  border: 2px solid #61cbff;
   transform: translate(-50%, -50%);
   transition: top 0.1s ease, left 0.1s ease;
 }
