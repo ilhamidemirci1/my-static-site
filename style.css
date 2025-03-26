@@ -276,11 +276,11 @@ p {
   animation: slideIn 1.2s ease-out;
 }
 
-.search-container {
-  max-width: 960px;     /* haber-kutularla aynı genişlikte tut */
-  margin: 30px auto 10px auto;  /* ortala */
-  padding: 0 10px;
-  text-align: left;      /* sola hizala */
+.intro,
+.search-container,
+.haberler {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 #searchInput {
