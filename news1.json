@@ -1,6 +1,5 @@
 {
   "articles": [
-
     {
       "id": "article-000",
       "title": "Test News",
@@ -17,8 +16,8 @@
       ],
       "target_audience": "Data Engineers, BI Developers, Data Analysts, Power BI Users",
       "process_date": "2025-03-25T10:30:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T11:37:54Z"
     },
     {
       "id": "article-001",
