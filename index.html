@@ -68,40 +68,51 @@
   </script>
 
   <!-- JSON'DAN HABERLERİ YÜKLE -->
-  <!-- JSON'DAN HABERLERİ YÜKLE -->
-<script>
-  fetch('news1.json')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById("haberContainer");
-
-      const sorted = data.articles.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
-
-      sorted.forEach(item => {
-        const fullText = item.content || "No content available.";
-        const trimmed = fullText.split('. ').slice(0, 2).join('. ') + '...';
-
-        const published = new Date(item.publication_date || item.published_date).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric'
+  <script>
+    fetch('news1.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("haberContainer");
+  
+        const sorted = data.articles.sort(
+          (a, b) => new Date(b.published_date) - new Date(a.published_date)
+        );
+  
+        sorted.forEach(item => {
+          const fullText = item.content || "No content available.";
+          const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
+  
+          // Yayın tarihi
+          const date = new Date(item.publication_date || item.published_date);
+          const dateStr = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          });
+  
+          // Teknoloji etiketleri (chip-style)
+          const techTags = (item.technologies || []).map(tech =>
+            `<span class="tech-chip">${tech}</span>`
+          ).join(' ');
+  
+          const div = document.createElement("div");
+          div.className = "haber-kutu";
+          div.innerHTML = `
+            <p class="pub-date">Published: ${dateStr}</p>
+            <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+            <p>${trimmed}</p>
+            <div class="tech-container">${techTags}</div>
+          `;
+          container.appendChild(div);
         });
-
-        const div = document.createElement("div");
-        div.className = "haber-kutu";
-        div.innerHTML = `
-          <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
-          <small style="display:block; margin-bottom: 10px; color: gray;"><em>Published: ${published}</em></small>
-          <p>${trimmed}</p>
-        `;
-        container.appendChild(div);
+      })
+      .catch(err => {
+        console.error("JSON yüklenemedi:", err);
+        document.getElementById("haberContainer").innerHTML =
+          "<p style='color:red'>News couldn't be loaded.</p>";
       });
-    })
-    .catch(err => {
-      console.error("JSON yüklenemedi:", err);
-      document.getElementById("haberContainer").innerHTML = "<p style='color:red'>News couldn't be loaded.</p>";
-    });
-</script>
+  </script>
+  
 
 
   <!-- Arama Filtresi -->

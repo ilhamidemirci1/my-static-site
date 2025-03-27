@@ -235,3 +235,27 @@ body.dark-mode h1 {
 #darkIcon.rotate {
   transform: rotate(180deg);
 }
+.pub-date {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.tech-container {
+  margin-top: 16px;
+}
+
+.tech-chip {
+  display: inline-block;
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 16px;
+  padding: 4px 12px;
+  font-size: 12px;
+  margin-right: 6px;
+  margin-top: 6px;
+}
+body.dark-mode .tech-chip {
+  background-color: #444;
+  color: #fff;
+}
