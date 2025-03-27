@@ -33,71 +33,7 @@
   </div>
 
   <!-- HABERLER -->
-
-<div class="haberler">
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/accelerating-agentic-workflows-with-azure-ai-foundry-nvidia-nim-and-nvidia-agentiq/" target="_blank">
-      Accelerating agentic workflows with Azure AI Foundry, NVIDIA NIM, and NVIDIA AgentIQ</a></h2>
-    <p>I’m excited to share a major leap forward in how we develop and deploy AI...</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/microsoft-and-nvidia-accelerate-ai-development-and-performance/" target="_blank">
-      Microsoft and NVIDIA accelerate AI development and performance</a></h2>
-    <p>Together, Microsoft and NVIDIA are accelerating some of the most groundbreaking innovations in AI...</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/cutting-digital-curbs-how-azure-ai-foundry-is-building-a-more-accessible-world/" target="_blank">
-      Cutting digital curbs: How Azure AI Foundry is building a more accessible world</a></h2>
-    <p>When my wife and I had our first child, I started seeing the world differently...</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/microsoft-cost-management-updates-march-2025/" target="_blank">
-      Microsoft Cost Management updates—March 2025</a></h2>
-    <p>In this article</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/announcing-the-responses-api-and-computer-using-agent-in-azure-ai-foundry/" target="_blank">
-      Announcing the Responses API and Computer-Using Agent in Azure AI Foundry</a></h2>
-    <p>AI agents are transforming industries by automating workflows, enhancing productivity, and enabling intelligent decision-making...</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/azure-ai-speech-new-capabilities-for-natural-conversations-2025-03/" target="_blank">
-      Azure AI Speech: New capabilities for natural conversations (March 2025)</a></h2>
-    <p>Explore new Azure AI Speech capabilities: voice switching, mixed-initiative dialogs, and more!</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/deploy-generative-ai-in-your-data-estate/" target="_blank">
-      Deploy generative AI in your data estate</a></h2>
-    <p>Accelerate AI transformation with the Microsoft Intelligent Data Platform and generative AI tools.</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/microsoft-fabric-updates-march-2025/" target="_blank">
-      Microsoft Fabric Updates – March 2025</a></h2>
-    <p>Check out the latest Fabric updates including Data Activator, Real-Time Intelligence, and more.</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/announcing-azure-ai-search-updates/" target="_blank">
-      Announcing Azure AI Search Updates</a></h2>
-    <p>Discover new enhancements in Azure AI Search for improved accuracy and performance in AI applications.</p>
-  </div>
-
-  <div class="haber-kutu">
-    <h2><a href="https://azure.microsoft.com/en-us/blog/microsoft-ignite-2024-ai-announcements/" target="_blank">
-      Microsoft Ignite 2024: AI Announcements</a></h2>
-    <p>Learn about the biggest AI announcements from Microsoft Ignite 2024.</p>
-  </div>
-
-</div>
-
+  <div class="haberler" id="haberContainer"></div>
 
   <!-- NO RESULT -->
   <p id="noResultsMessage" style="display: none; margin-top: 20px;">No matching results found.</p>
@@ -107,7 +43,7 @@
   <div class="cursor-outline"></div>
 
   <script>
-    // Fare takibi
+    // İmleç takibi
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
 
@@ -124,14 +60,33 @@
   <button id="scrollToTopBtn" title="Go to top">↑</button>
   <script>
     const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
     window.addEventListener("scroll", () => {
       scrollToTopBtn.style.display = window.pageYOffset > 300 ? "block" : "none";
     });
-
     scrollToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  </script>
+
+  <!-- JSON'DAN HABERLERİ YÜKLE -->
+  <script>
+    fetch('news.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("haberContainer");
+        const itemsSorted = data.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+        itemsSorted.forEach(item => {
+          const div = document.createElement("div");
+          div.className = "haber-kutu";
+          div.innerHTML = `
+            <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
+            <p>${item.contentSnippet || "No content available."}</p>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => console.error("JSON yüklenemedi:", err));
   </script>
 
   <!-- Arama Filtresi -->
@@ -155,7 +110,7 @@
     });
   </script>
 
-  <!-- Dark Mode Toggle -->
+  <!-- Dark Mode -->
   <script>
     const toggleButton = document.getElementById("darkModeToggle");
     const darkIcon = document.getElementById("darkIcon");
