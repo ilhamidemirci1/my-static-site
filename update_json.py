@@ -34,11 +34,11 @@ try:
     if not articles:
         print("Cosmos DB'den alınacak makale bulunamadı.")
     else:
-        # test.json dosyasına yaz
-        with open("test.json", "w", encoding="utf-8") as file:
+        # news1.json dosyasına yaz
+        with open("news1.json", "w", encoding="utf-8") as file:
             json.dump({"articles": articles}, file, ensure_ascii=False, indent=4)
 
-        print(f"✅ {len(articles)} makale test.json dosyasına yazıldı.")
+        print(f"✅ {len(articles)} makale news1.json dosyasına yazıldı.")
 
 except exceptions.CosmosHttpResponseError as e:
     print(f"Cosmos DB hatası: {e}")
