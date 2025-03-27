@@ -9,13 +9,21 @@ body {
 }
 
 /* BANNER */
-.banner {
+/* .banner {
   width: 100vw;
   height: auto;
   display: block;
   margin: 0;
   padding: 0;
   object-fit: cover;
+} */
+
+
+.banner {
+  width: 100vw;
+  height: 25vh; /* ya da 28vh gibi deneyebilirsin */
+  object-fit: cover;
+  object-position: center;
 }
 
 /* BAŞLIK VE GİRİŞ ALANI */
