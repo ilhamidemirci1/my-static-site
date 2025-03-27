@@ -80,7 +80,7 @@
           const fullText = item.content || "No content available.";
           
           // ✂️ İlk 5-6 cümleyi al
-          const trimmed = fullText.split('. ').slice(0, 5).join('. ') + '...';
+          const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
   
           const div = document.createElement("div");
           div.className = "haber-kutu";
