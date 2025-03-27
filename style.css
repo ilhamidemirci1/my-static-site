@@ -246,7 +246,10 @@ body.dark-mode h1 {
 .pub-date {
   font-style: italic;
   font-size: 0.9em;
-  color: rgba(65, 65, 65, 0.5); /* siyahın %50 saydamlığı */
+  color: rgba(0, 0, 0, 0.25); /* daha silik görünüm */
+}
+body.dark-mode .pub-date {
+  color: rgba(255, 255, 255, 0.35); /* karanlık modda da silik beyaz */
 }
 
 .tech-container {
