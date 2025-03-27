@@ -13,9 +13,6 @@ cosmos_client = CosmosClient(COSMOS_DB_ENDPOINT, COSMOS_DB_KEY)
 database = cosmos_client.get_database_client(COSMOS_DB_DATABASE)
 container = database.get_container_client(COSMOS_DB_CONTAINER)
 
-# Şu anki zaman (ISO 8601 formatında)
-now_iso = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-
 try:
     # published alanı false olan makaleleri sorgula
     query = "SELECT * FROM c WHERE c.published = false"
@@ -24,15 +21,11 @@ try:
     if not articles:
         print("Güncellenecek makale bulunamadı.")
     else:
-        for article in articles:
-            article["published"] = True
-            if "publication_date" not in article or not article["publication_date"]:
-                article["publication_date"] = now_iso
+        # news1.json dosyasına yaz
+        with open("news1.json", "w", encoding="utf-8") as file:
+            json.dump({"articles": articles}, file, ensure_ascii=False, indent=4)
 
-            # Güncellenmiş makaleyi Cosmos DB'ye yaz (upsert kullanarak)
-            container.upsert_item(body=article)
-
-        print(f"✅ {len(articles)} makale güncellendi ve Cosmos DB'ye yazıldı.")
+        print(f"✅ {len(articles)} makale news1.json dosyasına yazıldı.")
 
 except exceptions.CosmosHttpResponseError as e:
     print(f"Cosmos DB hatası: {e}")
