@@ -1,17 +1,7 @@
 import os
 import json
 from azure.cosmos import CosmosClient, exceptions
-
-def load_local_settings():
-    """Load environment variables from local.settings.json."""
-    settings_file = "local.settings.json"
-    if os.path.exists(settings_file):
-        with open(settings_file, "r") as file:
-            settings = json.load(file)
-            for key, value in settings.get("Values", {}).items():
-                os.environ[key] = value
-    else:
-        raise FileNotFoundError(f"{settings_file} not found in the current directory.")
+from cosmos_to_json import load_local_settings
 
 # Load settings from local.settings.json
 load_local_settings()
