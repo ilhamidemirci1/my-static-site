@@ -73,16 +73,15 @@
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("haberContainer");
-        const items = data.items || [];
-
-        const sorted = items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-
+  
+        const sorted = data.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
+  
         sorted.forEach(item => {
           const div = document.createElement("div");
           div.className = "haber-kutu";
           div.innerHTML = `
-            <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
-            <p>${item.contentSnippet || item.content || "No content available."}</p>
+            <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+            <p>${item.content || "No content available."}</p>
           `;
           container.appendChild(div);
         });
@@ -92,6 +91,7 @@
         document.getElementById("haberContainer").innerHTML = "<p style='color:red'>News couldn't be loaded.</p>";
       });
   </script>
+  
 
   <!-- Arama Filtresi -->
   <script>
