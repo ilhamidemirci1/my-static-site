@@ -15,7 +15,8 @@ with open(JSON_PATH, "r", encoding="utf-8") as f:
 for article in data["articles"]:
     if not article.get("published"):
         article["published"] = True
-        article["publication_date"] = now_iso
+        if not article.get("publication_date"):
+            article["publication_date"] = now_iso
 
 # Güncellenmiş veriyi tekrar yaz
 with open(JSON_PATH, "w", encoding="utf-8") as f:
