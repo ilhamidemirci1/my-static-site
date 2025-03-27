@@ -68,33 +68,33 @@
   </script>
 
   <!-- JSON'DAN HABERLERİ YÜKLE -->
-  fetch('news1.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("haberContainer");
+  <script>
+    fetch('news1.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("haberContainer");
 
-    // ❗️Burada "data" değil "data.articles" olacak
-    const sorted = data.articles.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
+        // Doğru olan: data.articles
+        const sorted = data.articles.sort((a, b) => new Date(b.published_date) - new Date(a.published_date));
 
-    sorted.forEach(item => {
-      const fullText = item.content || "No content available.";
-      const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
+        sorted.forEach(item => {
+          const fullText = item.content || "No content available.";
+          const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
 
-      const div = document.createElement("div");
-      div.className = "haber-kutu";
-      div.innerHTML = `
-        <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
-        <p>${trimmed}</p>
-      `;
-      container.appendChild(div);
-    });
-  })
-  .catch(err => {
-    console.error("JSON yüklenemedi:", err);
-    document.getElementById("haberContainer").innerHTML = "<p style='color:red'>News couldn't be loaded.</p>";
-  });
-
-  
+          const div = document.createElement("div");
+          div.className = "haber-kutu";
+          div.innerHTML = `
+            <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+            <p>${trimmed}</p>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        console.error("JSON yüklenemedi:", err);
+        document.getElementById("haberContainer").innerHTML = "<p style='color:red'>News couldn't be loaded.</p>";
+      });
+  </script>
 
   <!-- Arama Filtresi -->
   <script>
