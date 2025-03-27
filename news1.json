@@ -10,11 +10,17 @@
       "processed": true,
       "category": "Power BI",
       "ai_summary": "Microsoft announces general availability of incremental refresh policies for dataflows in Power BI, enabling more efficient data refresh processes. This feature allows users to refresh only changed data since the last refresh operation, reducing load on data sources and improving performance. The capability supports customizable refresh windows with date/time parameters and is particularly valuable for large datasets in enterprise environments.",
-      "technologies": ["Power BI", "Dataflows", "Microsoft Fabric", "Power BI Premium", "Power BI Embedded"],
+      "technologies": [
+        "Power BI",
+        "Dataflows",
+        "Microsoft Fabric",
+        "Power BI Premium",
+        "Power BI Embedded"
+      ],
       "target_audience": "Data Engineers, BI Developers, Data Analysts, Power BI Users",
       "process_date": "2025-03-25T10:30:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T07:04:31Z"
     },
     {
       "id": "article-002",
@@ -26,11 +32,17 @@
       "processed": true,
       "category": "Data Engineering",
       "ai_summary": "Microsoft announces significant enhancements to Azure Data Factory's Git integration and CI/CD capabilities to streamline the data integration development lifecycle. The updates include improved branch protection, conflict resolution, and pull request experiences for better team collaboration. New CI/CD features include ARM template enhancements, Azure DevOps integration, GitHub Actions support, and a built-in testing framework for more robust pipeline development.",
-      "technologies": ["Azure Data Factory", "Azure DevOps", "GitHub Actions", "CI/CD", "ARM Templates"],
+      "technologies": [
+        "Azure Data Factory",
+        "Azure DevOps",
+        "GitHub Actions",
+        "CI/CD",
+        "ARM Templates"
+      ],
       "target_audience": "Data Engineers, DevOps Engineers, Cloud Architects, ETL Developers",
       "process_date": "2025-03-25T10:35:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T07:04:31Z"
     },
     {
       "id": "article-003",
@@ -42,11 +54,17 @@
       "processed": true,
       "category": "Data Engineering",
       "ai_summary": "Microsoft announces the general availability of Microsoft Fabric, a unified analytics platform that integrates data engineering, integration, warehousing, science, real-time analytics, and business intelligence. At its core is OneLake, a single data lake for organizations that solves data silo challenges and supports open formats like Delta Lake. The platform offers seamless integration with existing Microsoft tools and third-party analytics solutions while providing multiple pricing options.",
-      "technologies": ["Microsoft Fabric", "OneLake", "Power BI", "Azure Synapse Analytics", "Delta Lake"],
+      "technologies": [
+        "Microsoft Fabric",
+        "OneLake",
+        "Power BI",
+        "Azure Synapse Analytics",
+        "Delta Lake"
+      ],
       "target_audience": "Data Engineers, Data Scientists, BI Professionals, IT Decision Makers, Analytics Teams",
       "process_date": "2025-03-25T10:40:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T07:04:31Z"
     },
     {
       "id": "article-004",
@@ -58,11 +76,17 @@
       "processed": true,
       "category": "Machine Learning",
       "ai_summary": "Microsoft enhances Azure Machine Learning's Automated ML capabilities with new support for computer vision and natural language processing tasks. The update adds AutoML for image classification, object detection, instance segmentation, text classification, named entity recognition, and question answering. These improvements democratize advanced ML, accelerate development, and provide production-ready models with responsible AI built-in to help data scientists build high-quality models without extensive manual experimentation.",
-      "technologies": ["Azure Machine Learning", "AutoML", "Computer Vision", "NLP", "Azure Cognitive Services"],
+      "technologies": [
+        "Azure Machine Learning",
+        "AutoML",
+        "Computer Vision",
+        "NLP",
+        "Azure Cognitive Services"
+      ],
       "target_audience": "Data Scientists, ML Engineers, AI Developers, Computer Vision Specialists, NLP Practitioners",
       "process_date": "2025-03-25T10:45:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T07:04:31Z"
     },
     {
       "id": "article-005",
@@ -74,11 +98,17 @@
       "processed": true,
       "category": "Data Engineering",
       "ai_summary": "Microsoft announces general availability of Azure Synapse Link for Dataverse, enabling seamless real-time analytics over data stored in Microsoft Dataverse. This cloud-native integration eliminates complex ETL processes by automatically synchronizing data from Dataverse to Azure Synapse Analytics in near real-time. The solution supports schema flexibility, comprehensive data integration, and advanced analytics while maintaining security and governance, allowing business users to work uninterrupted while analytics teams access the latest data.",
-      "technologies": ["Azure Synapse Link", "Dataverse", "Azure Synapse Analytics", "Dynamics 365", "Power Platform"],
+      "technologies": [
+        "Azure Synapse Link",
+        "Dataverse",
+        "Azure Synapse Analytics",
+        "Dynamics 365",
+        "Power Platform"
+      ],
       "target_audience": "Data Engineers, Business Analysts, Dynamics 365 Users, Power Platform Developers, Solution Architects",
       "process_date": "2025-03-25T10:50:00Z",
-      "published": false,
-      "publication_date": null
+      "published": true,
+      "publication_date": "2025-03-27T07:04:31Z"
     }
   ]
 }
