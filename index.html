@@ -79,7 +79,7 @@
 
       sorted.forEach(item => {
         const fullText = item.content || "No content available.";
-        const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
+        const trimmed = fullText.split('. ').slice(0, 2).join('. ') + '...';
 
         const published = new Date(item.publication_date || item.published_date).toLocaleDateString('en-US', {
           year: 'numeric',
@@ -91,8 +91,8 @@
         div.className = "haber-kutu";
         div.innerHTML = `
           <h2><a href="${item.url}" target="_blank">${item.title}</a></h2>
+          <small style="display:block; margin-bottom: 10px; color: gray;"><em>Published: ${published}</em></small>
           <p>${trimmed}</p>
-          <small><em>Published: ${published}</em></small>
         `;
         container.appendChild(div);
       });
