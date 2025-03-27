@@ -69,7 +69,7 @@
 
   <!-- JSON'DAN HABERLERİ YÜKLE -->
   <script>
-    fetch('news.json')
+    fetch('news1.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("haberContainer");
@@ -79,7 +79,7 @@
         sorted.forEach(item => {
           const fullText = item.content || "No content available.";
           
-          // ✂️ İlk 5-6 cümleyi al
+          // ✂️ İlk 3 cümleyi al
           const trimmed = fullText.split('. ').slice(0, 3).join('. ') + '...';
   
           const div = document.createElement("div");
