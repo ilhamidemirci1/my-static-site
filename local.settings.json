@@ -1,0 +1,14 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "OPENAI_API_KEY": "9GAfdzyCtDCAtLDk7jT18PfFoE2kKshg8WURevAarMVovXevOwpbJQQJ99BCACPV0roXJ3w3AAABACOGUqM8",
+    "OPENAI_ENDPOINT": "https://mstechnewsbot-functionapp-openai-b801.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-02-15-preview",
+    "COSMOS_DB_ENDPOINT": "https://mstechnewsbotcosmosdb.documents.azure.com:443/",
+    "COSMOS_DB_KEY": "64YHEhKacdk2JEtLD8U7x2bdAVKdrA6XqxX3P0pAI5YMGMln79h1Wj3C7DkUJMhF3T11hsAIK5TOACDbRAPi3A==",
+    "COSMOS_DB_DATABASE": "RSSFeedDB",
+    "COSMOS_DB_CONTAINER": "Articles",
+    "PYTHONPATH": ".venv/Lib/site-packages"
+  }
+}
