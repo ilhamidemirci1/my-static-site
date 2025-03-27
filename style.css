@@ -24,7 +24,14 @@ body {
   height: 25vh; /* ya da 28vh gibi deneyebilirsin */
   object-fit: cover;
   object-position: center;
+  transition: box-shadow 0.4s ease;
 }
+
+/* 🌚 Sadece dark mode'da gölge ekle */
+body.dark-mode .banner {
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+}
+
 
 /* BAŞLIK VE GİRİŞ ALANI */
 .intro {
