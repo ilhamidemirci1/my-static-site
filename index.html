@@ -42,11 +42,10 @@
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
+  <!-- Cursor Effect -->
   <script>
-    // İmleç takibi
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
-
     document.addEventListener("mousemove", (e) => {
       const { clientX, clientY } = e;
       cursorDot.style.top = `${clientY}px`;
@@ -74,19 +73,24 @@
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById("haberContainer");
-        const itemsSorted = data.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        const items = data.items || [];
 
-        itemsSorted.forEach(item => {
+        const sorted = items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+        sorted.forEach(item => {
           const div = document.createElement("div");
           div.className = "haber-kutu";
           div.innerHTML = `
             <h2><a href="${item.link}" target="_blank">${item.title}</a></h2>
-            <p>${item.contentSnippet || "No content available."}</p>
+            <p>${item.contentSnippet || item.content || "No content available."}</p>
           `;
           container.appendChild(div);
         });
       })
-      .catch(err => console.error("JSON yüklenemedi:", err));
+      .catch(err => {
+        console.error("JSON yüklenemedi:", err);
+        document.getElementById("haberContainer").innerHTML = "<p style='color:red'>News couldn't be loaded.</p>";
+      });
   </script>
 
   <!-- Arama Filtresi -->
