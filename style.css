@@ -245,8 +245,8 @@ body.dark-mode h1 {
 }
 .pub-date {
   font-style: italic;
-  color: #666;
-  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.5); /* siyahın %50 saydamlığı */
 }
 
 .tech-container {
