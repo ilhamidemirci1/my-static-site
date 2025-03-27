@@ -1,27 +1,46 @@
-import json
-from datetime import datetime
-
 import os
-JSON_PATH = os.path.join(os.path.dirname(__file__), "news1.json")
+import json
+from azure.cosmos import CosmosClient, exceptions
 
+def load_local_settings():
+    """Load environment variables from local.settings.json."""
+    settings_file = "local.settings.json"
+    if os.path.exists(settings_file):
+        with open(settings_file, "r") as file:
+            settings = json.load(file)
+            for key, value in settings.get("Values", {}).items():
+                os.environ[key] = value
+    else:
+        raise FileNotFoundError(f"{settings_file} not found in the current directory.")
 
-# Şu anki zaman (ISO 8601 formatında)
-now_iso = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+# Load settings from local.settings.json
+load_local_settings()
 
-# Dosyayı aç ve oku
-with open(JSON_PATH, "r", encoding="utf-8") as f:
-    data = json.load(f)
+# Cosmos DB bağlantısını kur
+COSMOS_DB_ENDPOINT = os.environ["COSMOS_DB_ENDPOINT"]
+COSMOS_DB_KEY = os.environ["COSMOS_DB_KEY"]
+COSMOS_DB_DATABASE = os.environ["COSMOS_DB_DATABASE"]
+COSMOS_DB_CONTAINER = os.environ["COSMOS_DB_CONTAINER"]
 
-# Her makale için kontrol et
-for article in data["articles"]:
-    if not article.get("published"):
-        article["published"] = True
-        # Eğer publication_date yoksa veya null ise o anki tarihi yaz
-        if "publication_date" not in article or article["publication_date"] in [None, ""]:
-            article["publication_date"] = now_iso
+cosmos_client = CosmosClient(COSMOS_DB_ENDPOINT, COSMOS_DB_KEY)
+database = cosmos_client.get_database_client(COSMOS_DB_DATABASE)
+container = database.get_container_client(COSMOS_DB_CONTAINER)
 
-# Güncellenmiş veriyi dosyaya yaz
-with open(JSON_PATH, "w", encoding="utf-8") as f:
-    json.dump(data, f, indent=2, ensure_ascii=False)
+try:
+    # Tüm makaleleri sorgula
+    query = "SELECT * FROM c"
+    articles = list(container.query_items(query=query, enable_cross_partition_query=True))
 
-print("✅ JSON dosyası güncellendi. Yayınlanmamış makaleler işaretlendi ve tarihleri atandı.")
+    if not articles:
+        print("Cosmos DB'den alınacak makale bulunamadı.")
+    else:
+        # test.json dosyasına yaz
+        with open("test.json", "w", encoding="utf-8") as file:
+            json.dump({"articles": articles}, file, ensure_ascii=False, indent=4)
+
+        print(f"✅ {len(articles)} makale test.json dosyasına yazıldı.")
+
+except exceptions.CosmosHttpResponseError as e:
+    print(f"Cosmos DB hatası: {e}")
+except Exception as e:
+    print(f"Bir hata oluştu: {e}")
