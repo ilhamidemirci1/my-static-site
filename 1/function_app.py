@@ -12,7 +12,7 @@ import azure.functions as func
 
 
 COSMOS_ENDPOINT = "https://mstechnewsbotcosmosdb.documents.azure.com:443/"
-COSMOS_KEY = "64YHEhKacdk2JEtLD8U7x2bdAVKdrA6XqxX3P0pAI5YMGMln79h1Wj3C7DkUJMhF3T11hsAIK5TOACDbRAPi3A=="
+COSMOS_KEY = os.environ["COSMOS_DB_KEY"]
 DATABASE_NAME = "RSSFeedDB"
 CONTAINER_NAME = "Articles"
 
