@@ -1,4 +1,0 @@
-#!/bin/bash
-echo "🔄 JSON güncelleniyor..."
-python ../../update_json.py
-echo "✅ JSON güncellendi, push ediliyor..."
