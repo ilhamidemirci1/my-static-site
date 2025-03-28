@@ -1,0 +1,9 @@
+{
+    "test": "This is a test JSON file.",
+    "status": "success",
+    "data": {
+        "id": 1,
+        "name": "Sample Data",
+        "active": true
+    }
+}
