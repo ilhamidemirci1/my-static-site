@@ -116,3 +116,5 @@ dist
 .pnp.*
 
 local.settings.json
+
+git_token.json
