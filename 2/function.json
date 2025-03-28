@@ -1,0 +1,14 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "AccountEndpoint=https://mstechnewsbotcosmosdb.documents.azure.com:443/;AccountKey=64YHEhKacdk2JEtLD8U7x2bdAVKdrA6XqxX3P0pAI5YMGMln79h1Wj3C7DkUJMhF3T11hsAIK5TOACDbRAPi3A==",
+      "databaseName": "RSSFeedDB",
+      "collectionName": "Articles",
+      "createLeaseCollectionIfNotExists": true
+    }
+  ]
+}
