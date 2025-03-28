@@ -81,7 +81,7 @@
   
         sorted.forEach(item => {
           const fullText = item.ai_summary || "No content available.";
-          const trimmed = fullText.split('. ').slice(0, 5).join('. ') + '...';
+          const trimmed = fullText.split('. ').slice(0, 5).join('. ');
   
           // Yayın tarihi
           const date = new Date(item.publication_date || item.published_date);
