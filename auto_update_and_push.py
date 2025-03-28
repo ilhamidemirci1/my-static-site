@@ -1,5 +1,6 @@
 import subprocess
 import json
+import os
 
 def run_update_json():
     """update_json.py dosyasını çalıştırır."""
@@ -11,25 +12,36 @@ def run_update_json():
         print(f"❌ update_json.py çalıştırılırken bir hata oluştu: {e}")
         exit(1)
 
+def load_git_credentials():
+    """git_token.json içinden kullanıcı adı ve token bilgilerini yükler."""
+    try:
+        with open("git_token.json", "r", encoding="utf-8") as f:
+            creds = json.load(f)
+            return creds["github_username"], creds["github_token"]
+    except FileNotFoundError:
+        print("❌ git_token.json bulunamadı.")
+        exit(1)
+    except KeyError:
+        print("❌ git_token.json içinde gerekli alanlar eksik.")
+        exit(1)
+
 def git_push():
-    """Git komutlarını çalıştırarak değişiklikleri push eder."""
+    """GitHub'a token ile otomatik push işlemi yapar."""
     try:
         print("🚀 Git işlemleri başlatılıyor...")
 
-        # TOKEN'I YÜKLE
-        with open("git_token.json", "r") as f:
-            token_data = json.load(f)
+        # Kimlik bilgilerini al
+        username, token = load_git_credentials()
 
-        username = token_data["github_username"]
-        token = token_data["github_token"]
-
-        # Uzak bağlantıyı ayarla (geçici olarak)
+        # Geçici remote bağlantısını ayarla
         remote_url = f"https://{username}:{token}@github.com/{username}/my-static-site.git"
         subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=True)
 
+        # Git işlemleri
         subprocess.run(["git", "add", "."], check=True)
         subprocess.run(["git", "commit", "-m", "msnewsbot"], check=True)
         subprocess.run(["git", "push"], check=True)
+
         print("✅ Değişiklikler başarıyla GitHub'a push edildi.")
     except subprocess.CalledProcessError as e:
         print(f"❌ Git işlemleri sırasında bir hata oluştu: {e}")
